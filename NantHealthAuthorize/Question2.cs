@@ -11,23 +11,27 @@ namespace Question2
         // interface
         interface IUser
         {
-            bool UserExists();
-            UserType getUserType();
-            User GetLoggedInUser();//return current logged in user data from the access token  
+
         }
         interface IManager : IEmployee
         {
-            User GetEmployee(Guid id);
-            bool UpdateEmployee(Guid id, User user);
+            bool EditEmployee(Guid id, EmployeeData data);//return true if data is successfully updated
         }
         interface IEmployee : IUser
         {
-
+            EmployeeData getEmployee(Guid? Id,Department department);//Get employee for current user or specified user if their department has permission to access it
+            Department getDepartment();
         }
         interface IAdministrator : IUser
         {
-            bool UpdateUser(Guid id, User user);//return true when database query is successful
-            bool UpdateUserPermissions(Guid id, UserType userType);
+            UserData UserData(Guid id);//get user data for any users 
+            bool EditUser(Guid id, UserData data);//return true if data is successfully updated
+            bool UpdatePermission(Guid id, EmployeeType type);//pass in new permissions for the supplied user. return true if data is updated
         }
     }
+    public class EmployeeData { }
+    public enum EmployeeType { }
+    public class UserData { }
+    public enum Department { }
+    
 }
