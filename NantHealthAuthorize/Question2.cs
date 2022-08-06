@@ -15,11 +15,12 @@ namespace Question2
         }
         interface IManager : IEmployee
         {
+            EmployeeData getEmployee(Guid? Id,Department department);//get employee data if employee is reporting to them, If no Id is supplied return current user employee data
             bool EditEmployee(Guid id, EmployeeData data);//return true if data is successfully updated
         }
         interface IEmployee : IUser
         {
-            EmployeeData getEmployee(Guid? Id,Department department);//Get employee for current user or specified user if their department has permission to access it
+            EmployeeData getEmployee(Guid? Id,Department department);//get employee data for current logged in user or specified user if they are in the HR department
             Department getDepartment();
         }
         interface IAdministrator : IUser
