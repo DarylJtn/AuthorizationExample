@@ -9,7 +9,6 @@ namespace NantHealthAuthorize
 {
     internal interface IDBLogic
     {
-        public bool authenticate(string username, string password);
         public User? GetUser(string? username);
     }
 }

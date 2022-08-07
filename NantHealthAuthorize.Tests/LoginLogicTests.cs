@@ -11,9 +11,9 @@ namespace NantHealthAuthorize.Tests
             bool expectedResult = true;
 
             User user = new User();
-            string plainTextPassword = "th0thI4uz!F=uTh*7R_+";
+            string plainTextPassword = "@=Up41&p?5tIsweSTIW&";
             user.username = "test";
-            user.password = "$2a$12$N.HhnzPp/SgxvaD0yRKdAeiQvYtfD9Ozrd0/X3/kuMZHkM8KOi/sa";//hashed password
+            user.password = "$argon2i$v=19$m=4096,t=3,p=2$S7w8qWz7NJRwzx1KjKK9Kw$wenh6H9tgElXABO3jYUeV5tIw5Ec9dPGU1JIQY4BIUU";//hashed password
             user.id = System.Guid.NewGuid();
             bool returnedResult = LoginLogic.ValidCredientials(user, plainTextPassword);
 
@@ -27,7 +27,7 @@ namespace NantHealthAuthorize.Tests
             User user = new User();
             string plainTextPassword = "InC0rectP4s5w0rd";
             user.username = "test";
-            user.password = "$2a$12$N.HhnzPp/SgxvaD0yRKdAeiQvYtfD9Ozrd0/X3/kuMZHkM8KOi/sa";//hashed incorrect password
+            user.password = "$argon2i$v=19$m=4096,t=3,p=2$S7w8qWz7NJRwzx1KjKK9Kw$wenh6H9tgElXABO3jYUeV5tIw5Ec9dPGU1JIQY4BIUU";//hashed incorrect password
             user.id = System.Guid.NewGuid();
             bool returnedResult = LoginLogic.ValidCredientials(user, plainTextPassword);
 

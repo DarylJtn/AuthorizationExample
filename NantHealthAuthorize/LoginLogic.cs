@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BCr = BCrypt.Net;
+using Isopoh.Cryptography.Argon2;
 
 namespace NantHealthAuthorize
 {
@@ -14,7 +15,7 @@ namespace NantHealthAuthorize
             if (user == null||enteredPassword == null) {
                 throw new ArgumentNullException("Username and password must be supplied");
             }
-            return BCr.BCrypt.Verify(enteredPassword, user.password);
+            return Argon2.Verify(user.password, enteredPassword);
         } 
     }
 }
