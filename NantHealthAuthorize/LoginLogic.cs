@@ -11,7 +11,7 @@ namespace NantHealthAuthorize
 {
     public static class LoginLogic
     {
-        public static bool ValidCredientials(User user,string enteredPassword) {
+        public static bool ValidCredientials(IUser user,string enteredPassword) {
             if (user == null||enteredPassword == null) {
                 throw new ArgumentNullException("Username and password must be supplied");
             }
