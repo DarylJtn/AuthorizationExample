@@ -1,4 +1,5 @@
 using NantHealthAuthorize.Models;
+using System;
 using Xunit;
 namespace NantHealthAuthorize.Tests
 {
@@ -32,5 +33,23 @@ namespace NantHealthAuthorize.Tests
 
             Assert.Equal(expectedResult, returnedResult);
         }
+        [Fact]
+        public void NullUserException()
+        {
+            User user = null;
+            var plainTextPassword = "test";
+            Assert.Throws<ArgumentNullException>(() => LoginLogic.ValidCredientials(user, plainTextPassword));
+        }
+        [Fact]
+        public void NullpasswordException()
+        {
+            User user = new User();
+            user.username = "test";
+            user.password = "$2a$12$N.HhnzPp/SgxvaD0yRKdAeiQvYtfD9Ozrd0/X3/kuMZHkM8KOi/sa";//hashed password
+            user.id = System.Guid.NewGuid();
+            string plainTextPassword = null;
+            Assert.Throws<ArgumentNullException>(() => LoginLogic.ValidCredientials(user, plainTextPassword));
+        }
+
     }
 }
