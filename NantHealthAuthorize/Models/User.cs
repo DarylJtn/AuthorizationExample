@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NantHealthAuthorize.Models
 {
-    internal class User
+    public class User
     {
         public Guid id { get; set; }
         public string username { get; set; }
