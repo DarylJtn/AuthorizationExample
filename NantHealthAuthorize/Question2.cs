@@ -15,7 +15,7 @@ namespace Question2
         }
         interface IManager : IEmployee
         {
-            EmployeeData getEmployee(Guid? Id,Department department);//get employee data if employee is reporting to them, If no Id is supplied return current user employee data
+            EmployeeData? getEmployee(Guid? Id,Department department);//get employee data if employee is reporting to them, If no Id is supplied return current user employee data
             bool EditEmployee(Guid id, EmployeeData data);//return true if data is successfully updated
         }
         interface IEmployee : IUser

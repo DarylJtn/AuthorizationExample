@@ -6,5 +6,5 @@ namespace NantHealthAuthorize.Models
         Guid id { get; set; }
         string password { get; set; }
         string username { get; set; }
-        ILoginLogic LoginLogic { get; set; } 
+    }
 }
