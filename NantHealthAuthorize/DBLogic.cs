@@ -14,7 +14,6 @@ namespace NantHealthAuthorize
         string connectionString = "Host=openmediavault.local:5432;Username=postgres;Password=Br1Fud&pophocr8d&zlswinu*l2ra;Database=HumanResources";
         public bool authenticate(string username, string password)
         {
-            
             using var con = new NpgsqlConnection(connectionString);
             con.Open();
             var sql = "SELECT password FROM \"UserAuthentication\" WHERE username = @username";
@@ -40,7 +39,7 @@ namespace NantHealthAuthorize
             var sql = "SELECT id,username,password FROM \"UserAuthentication\" WHERE username = @username";
             using var cmd = new NpgsqlCommand(sql, con);
             if(username != null)
-                cmd.Parameters.AddWithValue("username", username);
+                cmd.Parameters.AddWithValue("username", username.ToLower());
             using NpgsqlDataReader rdr = cmd.ExecuteReader();
             if (rdr.HasRows)
             {
